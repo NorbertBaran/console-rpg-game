@@ -29,11 +29,11 @@ public class Mushrooms extends Event {
     public void execute() {
         Random random=new Random();
         double mushroomHealthy=Math.abs(random.nextDouble());
-        int healthy=Math.abs(random.nextInt()) % 50;
+        int healthy=Math.abs(random.nextInt()) % 50 + 1;
         if(mushroomHealthy>0.30){
-            System.out.println("Zdobyte przez ciebie grzyby dostarczyły ci energii.\nOtrzymujesz "+healthy+"punktów życia.\nNiestey niektóre z grzybów okazały się halucynogenne.\n" +
+            System.out.println("Zdobyte przez ciebie grzyby dostarczyły ci energii.\nOtrzymujesz "+healthy+" punktów życia.\nNiestey niektóre z grzybów okazały się halucynogenne.\n" +
                     "Nie są one szkodliwe lecz w wyniku ich sporzycia nie jesteś w\nstaniekontrolować własnych decyzji.\nNastępnego dnia budzisz się w przypadkowym miejscu");
-
+            hero.setHp(hero.getHp()+healthy);
             randLocation();
 
         } else {
@@ -43,7 +43,7 @@ public class Mushrooms extends Event {
             } else {
                 System.out.println("Natrafiłeś na trującego grzyba. Na szczęście twój silny\norganizm zwalczył truciznę. Tracisz "+(50-hero.getEquipment().getProtection())+" życia.\n" +
                         "Następnego dnia budzisz się w przypadkowym miejscu.");
-
+                hero.setHp(hero.getHp()-(50-hero.getEquipment().getProtection()));
                 randLocation();
             }
         }

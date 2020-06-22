@@ -29,7 +29,7 @@ public class Camel extends Event {
         } else {
             System.out.println("Nie udało ci się dotrzeć do celu. Wielbłąd okazał się zbyt słaby.\nW wyniku ciężkiej, lecz nieudanej podróży tracisz dużo siły");
             int hurt=Math.abs(random.nextInt()) % 20 + 30;
-            if(hero.getHp()<hurt){
+            if(hero.getHp()<=hurt){
                 System.out.println("Straciłeś zbyt dużo siły.");
                 nextLocation=new Exit(hero);
             } else{
